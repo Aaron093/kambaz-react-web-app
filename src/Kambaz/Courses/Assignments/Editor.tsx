@@ -99,7 +99,7 @@ export default function AssignmentEditor() {
         <label htmlFor="wd-text-fields-dob"> Until </label>
         <br></br>
         <input type="date"
-       value="2024-05-07"
+       value="2024-05-14"
        id="wd-text-fields-dob"/><br/>
        <hr style={{ width: '300%', height: '3px', backgroundColor: 'black', border: 'none', margin: '20px auto' }} />
        <button>Cancel</button> <button>Save</button>

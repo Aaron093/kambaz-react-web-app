@@ -2,7 +2,7 @@ export default function Modules() {
     return (
       <div>
         {/* Implement Collapse All button, View Progress button, etc. */}
-        <button>Collapse all</button> <button>View Progress</button> <button>+ Module</button>
+        <button>Collapse all</button> <button>View Progress</button> 
         <select id="wd-select-one-genre">
    <option selected value="PA">
        Publish All</option>
