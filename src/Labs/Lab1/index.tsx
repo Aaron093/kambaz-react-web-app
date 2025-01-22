@@ -47,6 +47,9 @@ tag to tell browsers to render the gaps.
   My favorite recipe:
   <ol id="wd-your-favorite-recipe">
     {"apple pie"}
+      <li>Peel, core and slice the apples.</li> 
+      <li>In a large mixing bowl, gently toss the apple slices, lemon zest and lemon juice until well combined and set aside.</li> 
+      <li>Place the oven rack in the center position and preheat your oven to 400°F.</li>
   </ol>
   <h5>Unordered List Tag</h5>
 My favorite books (in no particular order)
@@ -60,6 +63,8 @@ My favorite books (in no particular order)
 Your favorite books (in no particular order)
 <ul id="wd-your-books">
   {/* complete on your own */}
+    <li>The green book</li>
+  <li>CS4500 reading</li>
 </ul>
       </div>
       <div id="wd-tables">
