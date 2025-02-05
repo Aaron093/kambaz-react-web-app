@@ -1,111 +1,153 @@
+import { Form, Row, Col } from "react-bootstrap";
+import { RxCross2 } from "react-icons/rx";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { FaCalendarAlt } from "react-icons/fa";
+
+
 export default function AssignmentEditor() {
     return (
-      <div id="wd-assignments-editor">
-        <label htmlFor="wd-name">Assignment Name</label>
-        <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
-        <textarea id="wd-description">
-          The assignment is available online Submit a link to the landing page of
-          your web application running on Netlify. The landing page should include
-          the following: your full name and section links to each of the lab
-          assignments Link to the kanbas application Links to all relevant source code repositories
-          The kanbas application should include a link to navigate back to the landing page
-        </textarea>
-        <br />
-        <table>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-points">Points</label>
-            </td>
-            <td>
-              <input id="wd-points" value={100} />
-            </td>
-          </tr>
-          {/* Complete on your own */}
-          <br></br>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-points">Assignment Group</label>
-            </td>
-            <td>
-            <select id="wd-select-one-genre">
-              <option selected value="PA">
-                 ASSIGNMENTS</option>
-            </select>
-            </td>
-          </tr>
-          <br></br>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-points">Display Grade as</label>
-            </td>
-            <td>
-            <select id="wd-select-one-genre">
-              <option selected value="PA">
-                 PERCENTAGE</option>
-            </select>
-            </td>
-          </tr>
-          <br></br>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-points">Submission Type</label>
-            </td>
-            <td>
-            <select id="wd-select-one-genre">
-              <option selected value="PA">
-                 Online</option>
-            </select>
-            </td>
-          </tr>
-          <label>Online Entry Options</label><br/>
+        <div>
+            <div style={{ width: '1100px'}}>
+            <Form.Group className="mb-3 col-6" controlId="AssignmentName">
+                <Form.Label className="mtext-muted">Assignment Name</Form.Label>
+                <Form.Control type="text"
+                     placeholder="Please input Assignment Name"
+                     defaultValue="A1" />
+            </Form.Group>
+            <Form.Group className="mb-3 col-6" controlId="AssignmentDescription">
+                <Card className="p-3">
+                    <br />
+                    <p> The Assignment is <span className="text-danger"> available online </span></p>
+                    <p> Submit a link to the landing page of your Web application running on Netlify.</p>
+                    <p> The landing page should include the following:</p>
+                    <ul className="ps-4">
+                        <li>Your full name and section</li>
+                        <li>Links to each of the lab assignments</li>
+                        <li>Link to the Kambaz application</li>
+                        <li>Links to all relevant source code repositories</li>
+                    </ul>
+                    <p> The Kambaz application should include a link to navigate back to the landing page.</p>
+                </Card>
+            </Form.Group>
+            </div>
 
-        <input type="checkbox" name="check-genre" id="wd-chkbox-comedy"/>
-        <label htmlFor="wd-chkbox-comedy">Text Entry</label><br/>
+            <div style={{width:"1100px"}}>
+            <Row className="mb-3">
+                <Col className="col-2">
+                    <Form.Label className="col-form-label float-end">Points</Form.Label>
+                </Col>
+                <Col className="col-4">
+                    <Form.Control type="number"
+                        id="inputPoint"
+                        className="form-control"
+                        defaultValue="100" />
+                </Col>
+            </Row>
 
-        <input type="checkbox" name="check-genre" id="wd-chkbox-drama"/>
-        <label htmlFor="wd-chkbox-drama">Website URL</label><br/>
+            <Row className="mb-3">
+                <Col className="col-2">
+                    <Form.Label className="col-form-label float-end">Assignment Group</Form.Label>
+                </Col>
+                <Col className="col-4">
+                    <Form.Select defaultValue="Assignment">
+                        <option value="1">Assignment</option>
+                        <option value="2">Quiz</option>
+                        <option value="3">Exam</option>
+                    </Form.Select>
+                </Col>
+            </Row>
 
-        <input type="checkbox" name="check-genre" id="wd-chkbox-scifi"/>
-        <label htmlFor="wd-chkbox-scifi">Media Recordings</label><br/>
+            <Row className="mb-3">
+                <Col className="col-2 float-end">
+                    <Form.Label className="col-form-label float-end">Display Grade as</Form.Label>
+                </Col>
+                <Col className="col-4">
+                    <Form.Select defaultValue="Assignment">
+                        <option value="1">Percentage</option>
+                        <option value="2">Points</option>
+                        <option value="3">Level</option>
+                    </Form.Select>
+                </Col>
+            </Row>
 
-        <input type="checkbox" name="check-genre" id="wd-chkbox-fantasy"/>
-        <label htmlFor="wd-chkbox-fantasy">Student Annotations</label>
-        <br></br>
-        <input type="checkbox" name="check-genre" id="wd-chkbox-fu"/>
-        <label htmlFor="wd-chkbox-fu">File Uploads</label>
+            <Row className="mb-3">
+                <Col className="col-2">
+                    <Form.Label className="col-form-label float-end">Submission Type</Form.Label>
+                </Col>
+                <Col className="col-4">
+                    <Card className="p-2">
+                        <Form.Select className="mb-3" defaultValue="Online">
+                            <option value="1">Online</option>
+                            <option value="2">Offline</option>
+                            <option value="3">No Submisiion needed</option>
+                        </Form.Select>
+                        <h6 className="fw-bold mb-3">Online Entry Options</h6>
+                        <Form.Check className="mb-3" label="Text Entry" />
+                        <Form.Check className="mb-3" label="Website URL" />
+                        <Form.Check className="mb-3" label="Media Recordings" />
+                        <Form.Check className="mb-3" label="Student Annotation" />
+                        <Form.Check className="mb-3" label="File Uploads" />
 
-        <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-points">Assign Assign to</label>
-            </td>
-            <td>
-                <br></br>
-              <input id="wd-points" value = 'Everyone' />
-            </td>
-        </tr>
+                    </Card>
+                </Col>
+            </Row>
 
-        <label htmlFor="wd-text-fields-dob"> Due </label>
-        <br></br>
-        <input type="date"
-       value="2024-05-13"
-       id="wd-text-fields-dob"/><br/>
+            <Row className="mb-3">
+                <Col className="col-2">
+                    <Form.Label className="col-form-label float-end">Assign</Form.Label>
+                </Col>
+                <Col className="col-4">
+                    <Card className="p-2">
+                        <h6 className="fw-bold mb-3">Assign to</h6>
+                            <Card className="p-1 mb-3">
+                            <div className="input-group">
+                                <Button className="btn-light btn-sm">Everyone <RxCross2 /></Button>
+                            </div>
+                            </Card>
+                        <h6 className="fw-bold mb-0">Due</h6>
 
-        <label htmlFor="wd-text-fields-dob"> Available from </label>
-        <br></br>
-        <input type="date"
-       value="2024-05-06"
-       id="wd-text-fields-dob"/><br/>
+                        <InputGroup className="mb-3">
+                            <Form.Control 
+                                defaultValue="May 13, 2024, 11:59 PM"
+                                placeholder="Assignment Due Date"
+                                type="text"/>
+                            <InputGroup.Text><FaCalendarAlt className="fs-6"/></InputGroup.Text>
+                        </InputGroup>
+                    <Row className="p-0">
 
-        <label htmlFor="wd-text-fields-dob"> Until </label>
-        <br></br>
-        <input type="date"
-       value="2024-05-14"
-       id="wd-text-fields-dob"/><br/>
-       <hr style={{ width: '300%', height: '3px', backgroundColor: 'black', border: 'none', margin: '20px auto' }} />
-       <button>Cancel</button> <button>Save</button>
+                        <Col className="pe-0">
+                        <h6 className="fw-bold mb-0">Available from</h6>
+                        <InputGroup className="mb-3">
+                            <Form.Control 
+                                defaultValue="May 6, 2024, 11:59 PM"
+                                placeholder="Assignment Available from Date"
+                                type="text"/>
+                            <InputGroup.Text><FaCalendarAlt className="fs-6"/></InputGroup.Text>
+                        </InputGroup>
+                        </Col>
+                        
+                        <Col className="ps-0">
+                        <h6 className="fw-bold mb-0">Until</h6>
+                        <InputGroup className="mb-3">
+                            <Form.Control 
+                                defaultValue="May 20, 2024, 11:59 PM"
+                                placeholder="Assignment Available Until Date"
+                                type="text"/>
+                            <InputGroup.Text><FaCalendarAlt className="fs-6"/></InputGroup.Text>
+                        </InputGroup>
+                        </Col>
+                    </Row>
 
-        </table>
-      </div>
-  );}
-  
-  
+                    </Card>
+                </Col>
+            </Row>
+ 
+
+
+            </div>
+        </div>
+            
+    );
+};
