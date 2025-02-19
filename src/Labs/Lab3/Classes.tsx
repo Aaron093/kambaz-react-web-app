@@ -1,7 +1,6 @@
 import './Classes.css';
 export default function Classes() {
     const color = 'red';
-    const dangerous = true;
     return (
         <div>
         <h2>Classes</h2>
