@@ -4,15 +4,12 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KambazNavigation from "./Navigation";
 import Courses from "./Courses";
-<<<<<<< Updated upstream
-=======
 import "./styles.css";
 import ProtectedRoute from "./Account/ProtectedRoute";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addCourse, deleteCourse, updateCourse } from "./Courses/reducer";
 
->>>>>>> Stashed changes
 export default function Kambaz() {
   const [course, setCourse] = useState<any>({
     _id: "0", name: "New Course", number: "New Number",
@@ -40,25 +37,6 @@ export default function Kambaz() {
 
   return (
     <div id="wd-kambaz">
-<<<<<<< Updated upstream
-      <table>
-        <tr>
-          <td valign="top">
-            <KambazNavigation />
-          </td>
-          <td valign="top">
-            <Routes>
-              <Route path="/" element={<Navigate to="Account" />} />
-              <Route path="/Account/*" element={<Account />} />
-              <Route path="/Dashboard" element={<Dashboard />} />
-              <Route path="/Courses/:cid/*" element={<Courses />} />
-              <Route path="/Calendar" element={<h1>Calendar</h1>} />
-              <Route path="/Inbox" element={<h1>Inbox</h1>} />
-            </Routes>
-          </td>
-        </tr>
-      </table>
-=======
       <KambazNavigation />
       <div className="wd-main-content-offset p-3">
       <Routes>
@@ -81,7 +59,6 @@ export default function Kambaz() {
             <Route path="/Inbox" element={<h1>Inbox</h1>} />
           </Routes>
       </div>
->>>>>>> Stashed changes
     </div>
   );
 }

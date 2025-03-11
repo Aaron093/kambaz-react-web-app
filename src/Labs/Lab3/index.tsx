@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import VariablesAndConstants from "./VariablesAndConstants";
 import VariableTypes from "./VariableTypes";
 import BooleanVariables from "./BooleanVariables";
@@ -35,12 +33,51 @@ import Highlight from "./Highlight";
 import AddPathParameters from "./AddPathParameters";
 import PathParameters from "./PathParameters";
 
-
->>>>>>> Stashed changes
 export default function Lab3() {
+  
+  console.log("test")
     return (
+      
       <div>
         <h2>Lab 3</h2>
+        <VariablesAndConstants />
+        <VariableTypes />
+        <BooleanVariables />
+        <IfElseFunction />
+        <TernaryOperator />
+        <ConditionalOutputIfElse />
+        <ConditionalOutputInline /> <hr />
+        <LegacyFunctions />
+        <ArrowFunctions />
+        <ImpliedReturn />
+        <TemplateLiterals />
+        <SimpleArrays />
+        <ArrayIndexAndLength />
+        <AddingAndRemovingToFromArrays />
+        <ForLoops />
+        <MapFunction />
+        <FindFunction />
+        <FindIndexFunction />
+        <FilterFunction />
+        <JsonStringify />
+        <House />
+        <TodoItem />
+        <TodoList />
+        <Spreading />
+        <Destructing />
+        <FunctionDestructing />
+        <DestructingImports />
+        <Classes />
+        <Styles />
+        <Add a={3} b={4} />
+        <h4>Square of 4</h4>
+        <Square>4</Square> <hr />
+        <Highlight>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipitratione eaque illo minus cum, saepe totam
+        vel nihil repellat nemo explicabo excepturi consectetur. Modi omnis minus sequi maiores, provident voluptates.
+        </Highlight> <hr />
+        <PathParameters />
+        <AddPathParameters />
       </div>
   );}
   

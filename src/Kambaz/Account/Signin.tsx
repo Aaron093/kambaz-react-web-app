@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-import { Link } from "react-router-dom";
-=======
 import { FormControl, Button } from "react-bootstrap";
 
 import { useState } from "react";
@@ -9,7 +6,6 @@ import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
 import * as db from "../Database";
 
->>>>>>> Stashed changes
 export default function Signin() {
   const [credentials, setCredentials] = useState<any>({});
   const dispatch = useDispatch();
@@ -24,20 +20,6 @@ export default function Signin() {
 
   return (
     <div id="wd-signin-screen">
-<<<<<<< Updated upstream
-      <h3>Sign in</h3>
-      <input className="wd-username" placeholder="username" /> <br />
-      <input className="wd-password" placeholder="password" type="password" /> <br />
-      <Link id="wd-signin-btn" to="/Kambaz/Dashboard">
-        Sign in
-      </Link>
-      <br />
-      <Link id="wd-signup-link" to="/Kambaz/Account/Signup">
-        Sign up
-      </Link>
-    </div>  
-);}
-=======
       <h1>Sign in</h1>
       <FormControl defaultValue={credentials.username}
              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
@@ -49,4 +31,3 @@ export default function Signin() {
       <Link id="wd-signup-link" to="/Kambaz/Account/Signup" >Sign up</Link>
 
     </div> );}
->>>>>>> Stashed changes
