@@ -4,8 +4,19 @@ import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
+<<<<<<< Updated upstream
 
 export default function Courses() {
+=======
+import { FaAlignJustify } from "react-icons/fa6"
+import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
+
+
+export default function Courses({ courses }: { courses: any[]; }) {
+  const { cid } = useParams();
+  const course = courses.find((course) => course._id === cid);
+  const { pathname } = useLocation()
+>>>>>>> Stashed changes
   return (
     <div id="wd-courses">
       <h2>Course 1234</h2>
