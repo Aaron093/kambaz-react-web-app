@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
-import React, { useState } from "react";
-import * as db from "../../Database";
+import { useState } from "react";
+// import * as db from "../../Database";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { FormControl } from "react-bootstrap";
 
 import { addModule, editModule, updateModule, deleteModule }
