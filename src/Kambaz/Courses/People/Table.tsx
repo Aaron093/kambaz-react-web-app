@@ -18,7 +18,7 @@ export default function PeopleTable() {
       enrollments.some((enrollment) => enrollment.user === usr._id && enrollment.course === cid)
     )
     .map((user: any) => (
-      <tr key={user._id}>
+      <tr >
         <td className="wd-full-name text-nowrap">
           <FaUserCircle className="me-2 fs-1 text-secondary" />
           <span className="wd-first-name">{user.firstName}</span>

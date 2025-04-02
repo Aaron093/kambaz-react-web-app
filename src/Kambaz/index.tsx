@@ -8,6 +8,7 @@ import "./styles.css";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import * as userClient from "./Account/client";
 import * as courseClient from "./Courses/client";
+import * as enrollmentClient from "./client"
 
 import { useSelector } from "react-redux";
 // import { useDispatch } from "react-redux";
@@ -23,6 +24,10 @@ export default function Kambaz() {
     image: "/images/reactjs.jpg", description: "New Description"
   });
   const [courses, setCourses] = useState<any[]>([]);
+  const [allCourses, setAllCourses] = useState<any[]>([]);
+  const [enrollments, setEnrollments] = useState<any[]>([]);
+  const [refreshFlag, setRefreshFlag] = useState(false);
+  const triggerRefresh = () => setRefreshFlag(prev => !prev);
 
   const fetchCourses = async () => {
     try {
@@ -35,7 +40,29 @@ export default function Kambaz() {
   
   useEffect(() => {
     fetchCourses();
-  }, [currentUser]);
+  }, [currentUser, enrollments]);
+
+  const fetchAllCourses = async () => {
+    try {
+      const courses = await courseClient.fetchAllCourses();
+      setAllCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchEnrollments = async () => {
+    const data = await enrollmentClient.fetchAllEnrollments();
+    setEnrollments(data);
+  };
+
+  useEffect(() => {
+    fetchEnrollments();
+  }, []);
+
+  useEffect(() => {
+    fetchAllCourses();
+  }, [refreshFlag]);
 
 
  // const dispatch = useDispatch();
@@ -47,6 +74,7 @@ export default function Kambaz() {
   const handleAddCourse = async () => {
     const newCourse = await userClient.createCourse(course);
     setCourses([ ...courses, newCourse ]);
+    triggerRefresh();
   };
 
   const handleDeleteCourse = async (courseId: string) => {
@@ -56,6 +84,7 @@ export default function Kambaz() {
       } else {
         console.error('Failed to delete course. Server returned:', status);
       }
+      triggerRefresh();
     };
 
   const handleUpdateCourse =  async () => {
@@ -63,9 +92,21 @@ export default function Kambaz() {
     setCourses(courses.map((c) => {
       if (c._id === course._id) { return course; }
       else { return c; }
-  }));
+    }));
+    triggerRefresh();
   };
 
+  const handleEnroll = async (userId: string, courseId: string) => {
+    await enrollmentClient.enrollUserInCourse(userId, courseId);
+    await fetchEnrollments();
+  };
+
+  const handleUnenroll = async (userId: string, courseId: string) => {
+    await enrollmentClient.unenrollUserFromCourse(userId, courseId);
+    await fetchEnrollments();
+  };
+
+  console.log(enrollments)
   return (
     <Session>
     <div id="wd-kambaz">
@@ -77,12 +118,17 @@ export default function Kambaz() {
             <Route path="/Dashboard" element={
               <ProtectedRoute>
               <Dashboard
+              allCourses={allCourses}
               courses={courses}
               course={course}
               setCourse={setCourse}
+              enrollments = {enrollments}
               addNewCourse={handleAddCourse}
               deleteCourse={handleDeleteCourse}
-              updateCourse={handleUpdateCourse}/>
+              updateCourse={handleUpdateCourse}
+              enroll = {handleEnroll}
+              unenroll = {handleUnenroll}/>
+
               </ProtectedRoute> }
             />
             

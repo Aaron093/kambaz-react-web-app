@@ -3,38 +3,29 @@ import { useState } from "react";
 import { Row, Col, FormControl } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useDispatch, useSelector } from "react-redux";
-import { enroll, unenroll } from "./reducer";
+import { useSelector } from "react-redux";
+// import { enroll, unenroll } from "./reducer";
 
 
-export default function Dashboard({courses, course, setCourse, addNewCourse,
-  deleteCourse, updateCourse }: {
-  courses: any[]; course: any;
+
+export default function Dashboard({ allCourses, courses, course, enrollments, setCourse, addNewCourse,
+  deleteCourse, updateCourse, enroll, unenroll }: {
+  allCourses:any[]; courses: any[]; course: any; enrollments: any[]
   setCourse: (course: any) => void;
   addNewCourse: () => void;
   deleteCourse: (course: any) => void;
-  updateCourse: (course:any) => void; }){
-  const dispatch = useDispatch()
+  updateCourse: (course:any) => void; 
+  enroll: (user:any,course:any) => void;
+  unenroll: (user:any,course:any) => void;}){
   
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
+  // const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
 
 
   const [showFilteredCourses, setShowFilteredCourses] = useState(true);
 
-/*   const displayedCourses = showFilteredCourses
-  ? courses.filter((course) =>
-      enrollments.some(
-        (enrollment:any) =>
-          enrollment.user === currentUser._id && enrollment.course === course._id
-      )
-    )
-  : courses; */
+  const displayedCourses = showFilteredCourses? courses: allCourses;
 
-
-
-  console.log(currentUser)
-  console.log(courses)
   if (currentUser.role === "FACULTY"){
     return (
 
@@ -60,10 +51,10 @@ export default function Dashboard({courses, course, setCourse, addNewCourse,
         
         <hr />
 
-        <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
+        <h2 id="wd-dashboard-published">Published Courses ({allCourses.length})</h2> <hr />
         <div id="wd-dashboard-courses">
           <Row xs={1} md={5} className="g-4">
-            {courses.map((course) => (
+            {allCourses.map((course) => (
               <Col className="wd-dashboard-course" style={{ width: "300px" }}>
                 <Card>
                   <Link to={`/Kambaz/Courses/${course._id}/Home`}
@@ -122,14 +113,14 @@ export default function Dashboard({courses, course, setCourse, addNewCourse,
 
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
-          {courses.map((course) => {
+          {displayedCourses.map((course) => {
             const isEnrolled = enrollments.some(
               (enrollment:any) =>
                 enrollment.user === currentUser._id && enrollment.course === course._id
             );
 
             return (
-              <Col className="wd-dashboard-course" style={{ width: "300px" }} key={course._id}>
+              <Col className="wd-dashboard-course" style={{ width: "300px" }}>
                 <Card>
                   <Card.Img src="/images/reactjs.jpg" variant="top" width="100%" height={160} />
                   <Card.Body className="card-body">
@@ -146,7 +137,7 @@ export default function Dashboard({courses, course, setCourse, addNewCourse,
                       <button
                         onClick={(event) => {
                           event.preventDefault();
-                          dispatch(unenroll({ user: currentUser._id, course: course._id }));
+                          unenroll(currentUser._id, course._id)
                         }}
                         className="btn btn-danger float-end"
                         id="wd-delete-course-click"
@@ -158,7 +149,7 @@ export default function Dashboard({courses, course, setCourse, addNewCourse,
                         id="wd-edit-course-click"
                         onClick={(event) => {
                           event.preventDefault();
-                          dispatch(enroll({ user: currentUser._id, course: course._id }));
+                          enroll(currentUser._id, course._id)
                         }}
                         className="btn btn-warning me-2 float-end"
                       >
