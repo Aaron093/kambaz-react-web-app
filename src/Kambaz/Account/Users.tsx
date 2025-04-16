@@ -6,7 +6,7 @@ import PeopleTable from "../Courses/People/Table";
 import * as client from "./client";
 export default function Users() {
   const [role, setRole] = useState("");
-  const [name, setName] = useState("");
+  const [_name, setName] = useState("");
   const filterUsersByName = async (name: string) => {
     setName(name);
     if (name) {
