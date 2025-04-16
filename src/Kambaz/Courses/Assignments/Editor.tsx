@@ -25,9 +25,9 @@ export default function AssignmentEditor() {
   const [dueDate, setDueDate] = useState(assignment?.dueDate || "");
   const [availableDate, setAvailableDate] = useState(assignment?.availableDate || "");
   const [availableUntil, setAvailableUntil] = useState(assignment?.availableUntil || "");
-  const [assignmentGroup, setAssignmentGroup] = useState(assignment?.assignmentGroup || "1");
-  const [gradeDisplay, setGradeDisplay] = useState(assignment?.gradeDisplay || "1");
-  const [submission, setSubmission] = useState(assignment?.submission || "1");
+  const [assignmentGroup, setAssignmentGroup] = useState(assignment?.assignmentGroup || "assignment");
+  const [gradeDisplay, setGradeDisplay] = useState(assignment?.gradeDisplay || "percentage");
+  const [submission, setSubmission] = useState(assignment?.submission || "online");
   const initialEntry = {
     textEntry: false,
     websiteURL: false,
@@ -47,9 +47,9 @@ export default function AssignmentEditor() {
       setDueDate("");
       setAvailableDate("");
       setAvailableUntil("");
-      setAssignmentGroup("1");
-      setGradeDisplay("1");
-      setSubmission("1");
+      setAssignmentGroup("assignment");
+      setGradeDisplay("percentage");
+      setSubmission("online");
       setEntry(initialEntry);
     }
   }, [aid]);
@@ -93,6 +93,7 @@ export default function AssignmentEditor() {
   const handleCancel = () => {
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
   };
+  
 
   return (
     <div>
@@ -145,9 +146,9 @@ export default function AssignmentEditor() {
                 <Col className="col-4">
                     <Form.Select value={assignmentGroup} 
                      onChange={(e) => setAssignmentGroup(e.target.value)}>
-                        <option value="1">Assignment</option>
-                        <option value="2">Quiz</option>
-                        <option value="3">Exam</option>
+                        <option value="assignment">Assignment</option>
+                        <option value="quiz">Quiz</option>
+                        <option value="exam">Exam</option>
                     </Form.Select>
                 </Col>
         </Row>
@@ -159,9 +160,9 @@ export default function AssignmentEditor() {
             <Col className="col-4">
                 <Form.Select value={gradeDisplay}
                  onChange={(e) => setGradeDisplay(e.target.value)}>
-                    <option value="1">Percentage</option>
-                    <option value="2">Points</option>
-                    <option value="3">Level</option>
+                    <option value="percentage">Percentage</option>
+                    <option value="points">Points</option>
+                    <option value="level">Level</option>
                 </Form.Select>
             </Col>
         </Row>
@@ -174,9 +175,9 @@ export default function AssignmentEditor() {
                 <Card className="p-2">
                     <Form.Select className="mb-3" value={submission}
                      onChange={(e) => setSubmission(e.target.value)}>
-                        <option value="1">Online</option>
-                        <option value="2">Offline</option>
-                        <option value="3">No Submisiion needed</option>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                        <option value="none">No Submission needed</option>
                     </Form.Select>
                     <h6 className="fw-bold mb-3">Online Entry Options</h6>
                     <Form.Check className="mb-3" label="Text Entry"

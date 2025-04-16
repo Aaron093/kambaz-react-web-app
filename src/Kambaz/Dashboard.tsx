@@ -105,7 +105,7 @@ export default function Dashboard({ allCourses, courses, course, enrollments, se
         <Col>
           <button className="btn btn-lg btn-primary float-end"
                         onClick={() => setShowFilteredCourses(!showFilteredCourses)} >
-                        Enrollment
+                        {showFilteredCourses ? "My Courses" : "All Courses"}
           </button>
         </Col>
       </Row>
